@@ -10,6 +10,7 @@
   "author": "Ana Paula Januário",
   "license": "ISC",
   "main": "index.js",
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/paulajanu/SAP009-md-links.git"
@@ -27,5 +28,8 @@
     "@babel/preset-env": "^7.21.4",
     "eslint": "^8.38.0",
     "jest": "^29.5.0"
+  },
+  "dependencies": {
+    "chalk": "^5.2.0"
   }
 }
