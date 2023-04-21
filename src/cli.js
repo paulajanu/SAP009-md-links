@@ -10,8 +10,21 @@ function imprimeLista(valida, resultado, identificador = '') {
         .then((categoria) => {
             console.log(chalk.yellow('\n', 'Lista validada:'), 
             chalk.underline.yellow(identificador)), 
-            categoria.map(({text, href, file, status}) => console.log(chalk.green(' \u2714 ') + `${chalk.magenta(file)} | ${chalk.magenta(href)} | ${status} | ${chalk.magenta(text)}`));
+            categoria.map(({text, href, file, status}) => console.log(chalk.yellow(' \u2726 ') + `${chalk.magenta(file)} | ${chalk.magenta(href)} | ${status} | ${chalk.magenta(text)}`));
     })
+    
+   
+    //categoria.map(({text, href, file, status}) => console.log(chalk.green(' \u2714 ') + `${chalk.magenta(file)} | ${chalk.magenta(href)} | ${status} | ${chalk.magenta(text)}`));
+    
+
+//     categoria.map(({text, href, file, status}) => 
+//   console.log(
+//     status === 'OK'
+//       ? chalk.green(' \u2714 ') + `${chalk.magenta(file)} | ${chalk.magenta(href)} | ${chalk.green(status)} | ${chalk.magenta(text)}`
+//       : chalk.red(' \u2716 ') + `${chalk.magenta(file)} | ${chalk.magenta(href)} | ${chalk.red(status)} | ${chalk.magenta(text)}`
+//   )
+// );
+// ${item.ok ? chalk.green('\u2714') : chalk.red('\u2718')}
     } else { 
         console.log(chalk.yellow('\n', 'Lista de links:'), 
         chalk.underline.yellow(identificador)),

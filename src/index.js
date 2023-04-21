@@ -78,7 +78,7 @@ function mdLinks(path, options) {
       pegaArquivo(path)
       .then(resultado => {
         if (resultado.length === 0) {
-          console.log(chalk.bold.red('\n', '\u2718 Não há links no arquivo \u2718'))
+          console.log(chalk.red('\n', '\u2718 Não há links no arquivo \u2718'))
         } else {
           imprimeLista(options.validate, resultado);
         }
