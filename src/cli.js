@@ -1,32 +1,16 @@
 import chalk from 'chalk';
-//import fs from 'fs';
-//import pegaArquivo from './index.js';
 import mdLinks from './index.js';
-import listaValidada from './http-validacao.js';
+import { listaValidada } from './validacao-stats.js';
 
 function imprimeLista(valida, resultado, identificador = '') {
     if (valida) {
         listaValidada(resultado)
         .then((categoria) => {
-            console.log(chalk.yellow('\n', 'Lista validada:'), 
+            console.log(chalk.yellow('\n', '\u26D3 Lista de links válidos:'), 
             chalk.underline.yellow(identificador)), 
-            categoria.map(({text, href, file, status}) => console.log(chalk.yellow(' \u2726 ') + `${chalk.magenta(file)} | ${chalk.magenta(href)} | ${status} | ${chalk.magenta(text)}`));
-    })
-    
-   
-    //categoria.map(({text, href, file, status}) => console.log(chalk.green(' \u2714 ') + `${chalk.magenta(file)} | ${chalk.magenta(href)} | ${status} | ${chalk.magenta(text)}`));
-    
-
-//     categoria.map(({text, href, file, status}) => 
-//   console.log(
-//     status === 'OK'
-//       ? chalk.green(' \u2714 ') + `${chalk.magenta(file)} | ${chalk.magenta(href)} | ${chalk.green(status)} | ${chalk.magenta(text)}`
-//       : chalk.red(' \u2716 ') + `${chalk.magenta(file)} | ${chalk.magenta(href)} | ${chalk.red(status)} | ${chalk.magenta(text)}`
-//   )
-// );
-// ${item.ok ? chalk.green('\u2714') : chalk.red('\u2718')}
+            categoria.map(({text, href, file, status}) => console.log(`${chalk.magenta(file)} | ${chalk.magenta(href)} | ${status} | ${chalk.magenta(text)}`))});
     } else { 
-        console.log(chalk.yellow('\n', 'Lista de links:'), 
+        console.log(chalk.yellow('\n', '\u26D3 Lista de links:'), 
         chalk.underline.yellow(identificador)),
         resultado.map(({text, href, file}) => console.log(`${chalk.magenta(file)} | ${chalk.magenta(href)} | ${chalk.magenta(text)}`));
     }
@@ -41,35 +25,3 @@ const options = {
 }
 
 mdLinks(path, options)
-
-// function processaTexto (argumentos) {
-//     const caminho = argumentos[2];
-//     const valida = argumentos[3] === '--validate';
-    
-//     try {
-//         fs.lstatSync(caminho);
-//     } catch (erro) {
-//         if (erro.code === 'ENOENT') {
-//             console.log(chalk.bold.red('\n', '✘ Arquivo ou diretório não existe ✘'));
-//             return;
-//         }
-//     } 
-
-//     if (fs.lstatSync(caminho).isFile()) {
-//         pegaArquivo(argumentos[2])
-//         .then(resultado => {
-//             imprimeLista(valida, resultado);
-//         })  
-//     } else if (fs.lstatSync(caminho).isDirectory()) {
-//         fs.promises.readdir(caminho)
-//         .then(arquivos => {
-//             arquivos.forEach((nomeDeArquivo) => {
-//                 pegaArquivo(`${caminho}/${nomeDeArquivo}`)
-//                 .then((lista) => {
-//                     imprimeLista(valida, lista, nomeDeArquivo);
-//                 });
-//             })
-//         })
-//     }
-// }
-// processaTexto(caminho);

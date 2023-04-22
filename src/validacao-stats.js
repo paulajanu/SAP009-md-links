@@ -1,9 +1,5 @@
 import chalk from 'chalk';
 
-function extraiLinks(arrLinks) {
-    return arrLinks.map((objetoLink) => objetoLink.href)
-}
-
 function checaStatus (listaURLs) {
     return Promise.all(
         listaURLs.map((url) => {
@@ -23,25 +19,33 @@ function checaStatus (listaURLs) {
              return chalk.red('Ocorreu algum erro');
             }
         })
-    }))
+    })) 
 }
-  
-// function manejaErros (erro) {
-//     if (erro.cause.code === 'ENOTFOUND') {
-//         return 'Link não encontrado';
-//     } else {
-//      return 'Ocorreu algum erro';
-//     }
-// }
 
-export default function listaValidada (listaDeLinks) {
-    const links = extraiLinks(listaDeLinks);
-    return checaStatus(links)
+function listaValidada(arrLinks) {
+    return checaStatus(arrLinks.map((objetoLink) => objetoLink.href))
     .then((status) => {
-        return listaDeLinks.map((objeto, indice) => ({
+        return arrLinks.map((objeto, indice) => ({
             ...objeto,
             status: status[indice]
         }));
     });
 }
+
+function verificaLinks(arrLinks) {
+    const totalLinks = arrLinks.length;
   
+    const uniqueLinks = new Set(arrLinks.map((objetoLink) => objetoLink.href)).size;
+  
+    return checaStatus(arrLinks.map((objetoLink) => objetoLink.href))
+      .then((statusLinks) => {
+        const brokenLinks = statusLinks.filter(status => status.startsWith(chalk.red('FAIL'))).length;
+  
+        return { totalLinks, uniqueLinks, brokenLinks };
+      })
+      .catch((erro) => {
+        console.error(erro);
+      });
+  }
+
+export {listaValidada, verificaLinks}
