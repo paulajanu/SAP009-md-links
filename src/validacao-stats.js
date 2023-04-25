@@ -21,6 +21,7 @@ function checaStatus (listaURLs) {
         })
     })) 
 }
+  
 
 function listaValidada(arrLinks) {
     return checaStatus(arrLinks.map((objetoLink) => objetoLink.href))
@@ -48,4 +49,4 @@ function verificaLinks(arrLinks) {
       });
   }
 
-export {listaValidada, verificaLinks}
+export {checaStatus, listaValidada, verificaLinks}

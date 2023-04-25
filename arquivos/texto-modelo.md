@@ -9,5 +9,5 @@ Essas são as três principais linguagens utilizadas no front-end da nossa aplic
 
 [JavaScript](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript): A única linguagem de programação das 3 tecnologias citadas. Ela é utilizada para deixar a página com mais movimento, podendo atualizar elementos dinamicamente e lidar melhor com dados enviados e recebidos na página. Sempre que vir uma caixinha de alerta apitando em um site, ou um mecanismo de autocomplete em algum campo, saiba que é o Javascript agindo. 
 
-[Teste de retorno 400](https://httpstat.us/404).
+[Teste de retorno 400](https://www.google.com.br/jhsjdjsdjbn).
 [Abelhinha](http://abelhinha.com.br/)

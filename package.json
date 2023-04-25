@@ -1,5 +1,8 @@
 {
   "name": "@anapaula/sap009-md-links",
+  "bin": {
+    "md-links": "./src/cli.js"
+  },
   "version": "1.0.0",
   "description": "Quarto projeto da Laboratória: Biblioteca que lê e analisa arquivos no formato Markdown, para verificar os arquivos que contenham links e mostrar algumas estatísticas",
   "keywords": [
@@ -20,7 +23,8 @@
   },
   "homepage": "https://github.com/paulajanu/SAP009-md-links#readme",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --verbose --coverage",
+    "eslint": "eslint --fix --ext .js src/ test/"
   },
   "devDependencies": {
     "@babel/cli": "^7.21.0",
