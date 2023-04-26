@@ -1,16 +1,16 @@
 import fs from 'fs';
 import chalk from 'chalk';
-import { pegaArquivo } from "../src/index.js";
+import { getFile } from "../src/index.js";
 import { jest } from '@jest/globals';
 import mdLinks from '../src/index.js';
-import imprimeLista from '../src/imprimeLista.js';
-import { listaValidada } from '../src/validacao-stats.js';
-import { verificaLinks } from '../src/validacao-stats.js';
-import { checaStatus } from '../src/validacao-stats.js';
+import printList from '../src/printList.js';
+import { validatedList } from '../src/validacao-stats.js';
+import { checkLinks } from '../src/validacao-stats.js';
+import { checkStatus } from '../src/validacao-stats.js';
 
-describe('pegaArquivo', () => {
+describe('getFile', () => {
   it('deve ser uma função', () => {
-    expect(typeof pegaArquivo).toBe('function');
+    expect(typeof getFile).toBe('function');
   });
   
   it('Deve retornar um array de objetos com as informações de links do arquivo', async () => {
@@ -18,7 +18,7 @@ describe('pegaArquivo', () => {
     const conteudoDoArquivo = '[Google](https://www.google.com)';
     jest.spyOn(fs.promises, 'readFile')
       .mockImplementation(() => Promise.resolve(conteudoDoArquivo));
-    const resultado = await pegaArquivo(caminhoDoArquivo);
+    const resultado = await getFile(caminhoDoArquivo);
     const resultadoEsperado = [
       {
         href: 'https://www.google.com',
@@ -34,11 +34,11 @@ describe('pegaArquivo', () => {
     const mensagemDeErro = `- ✘ Não existe arquivo no diretório ✘`;
     jest.spyOn(fs.promises, 'readFile')
       .mockImplementation(() => Promise.reject(new Error('Arquivo não encontrado')));
-    await expect(pegaArquivo(caminhoDoArquivo)).rejects.toThrow(mensagemDeErro);
+    await expect(getFile(caminhoDoArquivo)).rejects.toThrow(mensagemDeErro);
   });
 });
 
-describe('imprimeLista', () => {
+describe('printList', () => {
   it('deve imprimir lista de links válidos', async () => {
     const valida = true;
     const resultado = [      { text: 'Link 1', href: 'http://www.link1.com', file: 'file1', status: 200 },      { text: 'Link 2', href: 'http://www.link2.com', file: 'file2', status: 404 }    ];
@@ -46,7 +46,7 @@ describe('imprimeLista', () => {
 
     console.log = jest.fn();
 
-    await imprimeLista(valida, resultado, identificador);
+    await printList(valida, resultado, identificador);
 
     if (console.log.mock.calls.length > 0) {
       expect(console.log.mock.calls[0][0]).toContain(`Lista de links válidos:`);
@@ -61,7 +61,7 @@ describe('imprimeLista', () => {
     const resultado = [{ text: 'Link 1', href: 'http://www.link1.com', file: 'file1.md' }, { text: 'Link 2', href: 'http://www.link2.com', file: 'file2.md' },];
     const identificador = 'Identificador';
   
-    await imprimeLista(valida, resultado, identificador);
+    await printList(valida, resultado, identificador);
   
     expect(console.log.mock.calls.length).toBe(resultado.length + 1);
     expect(console.log.mock.calls[0][0]).toContain(`Lista de links:`);
@@ -71,9 +71,9 @@ describe('imprimeLista', () => {
   });
 });
 
-describe('listaValidada', () => {
+describe('validatedList', () => {
   it('deve retornar uma promessa', () => {
-    const resultado = listaValidada([{ href: 'http://google.com' }]);
+    const resultado = validatedList([{ href: 'http://google.com' }]);
     expect(resultado).toBeInstanceOf(Promise);
   });
 
@@ -84,7 +84,7 @@ describe('listaValidada', () => {
       { href: 'http://linkedin.com' },
     ];
 
-    return listaValidada(links).then((resultado) => {
+    return validatedList(links).then((resultado) => {
       expect(resultado).toBeInstanceOf(Array);
 
       resultado.forEach((item) => {
@@ -95,9 +95,9 @@ describe('listaValidada', () => {
   });
 });
 
-describe('verificaLinks', () => {
+describe('checkLinks', () => {
   it('deve retornar uma promessa', () => {
-    const resultado = verificaLinks([{ href: 'http://google.com' }]);
+    const resultado = checkLinks([{ href: 'http://google.com' }]);
     expect(resultado).toBeInstanceOf(Promise);
   });
 
@@ -108,7 +108,7 @@ describe('verificaLinks', () => {
       { href: 'http://linkedin.com' },
     ];
 
-    return verificaLinks(links).then((resultado) => {
+    return checkLinks(links).then((resultado) => {
       expect(resultado).toHaveProperty('totalLinks');
       expect(resultado).toHaveProperty('uniqueLinks');
       expect(resultado).toHaveProperty('brokenLinks');
@@ -118,16 +118,16 @@ describe('verificaLinks', () => {
   it('deve lidar corretamente com erros', () => {
     const links = [];
 
-    return verificaLinks(links).catch((erro) => {
+    return checkLinks(links).catch((erro) => {
       expect(erro).toBeInstanceOf(Error);
     });
   });
 });
 
-describe('checaStatus', () => {
+describe('checkStatus', () => {
   it('verifica se todas as URLs estão OK', async () => {
     const urls = ['https://www.google.com', 'https://www.facebook.com'];
-    const resultado = await checaStatus(urls);
+    const resultado = await checkStatus(urls);
     expect(resultado).toEqual([`${chalk.green('OK')} | ${chalk.green('200')}`, `${chalk.green('OK')} | ${chalk.green('200')}`]);
   });
 });
@@ -143,3 +143,6 @@ describe('mdLinks', () => {
     expect(() => mdLinks('caminho/inválido')).toThrowError(/O caminho "caminho\/inválido" é inválido/);
   });
 });
+
+
+   

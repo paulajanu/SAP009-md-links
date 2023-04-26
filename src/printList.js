@@ -1,9 +1,9 @@
 import chalk from 'chalk';
-import { listaValidada } from './validacao-stats.js';
+import { validatedList } from './validacao-stats.js';
 
-function imprimeLista(valida, resultado, identificador ='') {
+function printList(valida, resultado, identificador ='') {
     if (valida) {
-        listaValidada(resultado)
+        validatedList(resultado)
         .then((categoria) => {
             console.log(chalk.yellow('\n', '\u26D3 Lista de links válidos:'), 
             chalk.underline.yellow(identificador)), 
@@ -15,4 +15,4 @@ function imprimeLista(valida, resultado, identificador ='') {
     }
 }
 
-export default imprimeLista;
+export default printList;

@@ -1,6 +1,6 @@
 import chalk from 'chalk';
 
-function checaStatus (listaURLs) {
+function checkStatus (listaURLs) {
     return Promise.all(
         listaURLs.map((url) => {
         return fetch(url)
@@ -11,7 +11,6 @@ function checaStatus (listaURLs) {
                 return `${chalk.red('FAIL')} | ${chalk.red(response.status)}`
             }
         })
-        //.then(response => `${response.status} - ${response.statusText}`)
         .catch(erro => {
             if (erro.cause.code === 'ENOTFOUND') {
                 return chalk.red('Link não encontrado');
@@ -23,8 +22,8 @@ function checaStatus (listaURLs) {
 }
   
 
-function listaValidada(arrLinks) {
-    return checaStatus(arrLinks.map((objetoLink) => objetoLink.href))
+function validatedList(arrLinks) {
+    return checkStatus(arrLinks.map((objetoLink) => objetoLink.href))
     .then((status) => {
         return arrLinks.map((objeto, indice) => ({
             ...objeto,
@@ -33,12 +32,12 @@ function listaValidada(arrLinks) {
     });
 }
 
-function verificaLinks(arrLinks) {
+function checkLinks(arrLinks) {
     const totalLinks = arrLinks.length;
   
     const uniqueLinks = new Set(arrLinks.map((objetoLink) => objetoLink.href)).size;
   
-    return checaStatus(arrLinks.map((objetoLink) => objetoLink.href))
+    return checkStatus(arrLinks.map((objetoLink) => objetoLink.href))
       .then((statusLinks) => {
         const brokenLinks = statusLinks.filter(status => status.startsWith(chalk.red('FAIL'))).length;
   
@@ -49,4 +48,4 @@ function verificaLinks(arrLinks) {
       });
   }
 
-export {checaStatus, listaValidada, verificaLinks}
+export {checkStatus, validatedList, checkLinks}
