@@ -9,13 +9,13 @@
 * [4. Guia de uso - comandos 🗺️](#4-guia-de-uso)
 * [5. Ferramentas utilizadas 🔧](#5-ferramentas-utilizadas)
 
-## Resumo do projeto 📃
+## 1. Resumo do projeto 📃
 
 Nesse projeto foi desenvolvida uma biblioteca que lê e analisa arquivos no formato Markdown, para verificar os arquivos que contenham links e mostrar algumas estatísticas.
 
 Markdown é uma linguagem de marcação muito popular entre os programadores. É usada em muitas plataformas que manipulam texto (GitHub, fórum, blogs e etc) e é muito comum encontrar arquivos com este formato em qualquer repositório (começando pelo tradicional README.md). Os arquivos Markdown normalmente contém links que podem estar quebrados, ou que já não são válidos, prejudicando muito o valor da informação que está ali.
 
-## Funcionalidades 💻
+## 2. Funcionalidades 💻
 
 As funcionalidades atualmente disponíveis são:
 
@@ -27,11 +27,15 @@ As funcionalidades atualmente disponíveis são:
 
 Essas funcionalidades se aplicam tanto para um arquivo específico quanto para um diretório. 
 
-## Instalação ⚙️
+## 3. Instalação ⚙️
 
-Em andamento 🧵
+Para instalar a biblioteca, execute o seguinte comando no terminal:
+
+```bash
+  npm i paulajanu-sap009-md-links
+```
     
-## Guia de uso - comandos 🗺️
+## 4. Guia de uso - comandos 🗺️
 
 **🔍 Listagem de links do diretório:**
 
@@ -110,7 +114,7 @@ Arquivo com extensão que não seja Markdown `(.md)`:
 Arquivo sem links:
 <br><img src="./arquivos/comandos/md-links-sem-links.png"><br>
 
-## Ferramentas utilizadas 🔧
+## 5. Ferramentas utilizadas 🔧
 
 <div align="center">
  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" style="height: 30px;"/>

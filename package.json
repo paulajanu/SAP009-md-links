@@ -1,5 +1,5 @@
 {
-  "name": "@anapaula/sap009-md-links",
+  "name": "paulajanu-sap009-md-links",
   "bin": {
     "md-links": "./src/cli.js"
   },
