@@ -43,7 +43,7 @@ Para instalar a biblioteca, execute o seguinte comando no terminal:
   md-links ./nomeDoDiretório
 ```
 Esse comando procura arquivos na rota especificada e imprime os links encontrados, juntamente com a rota do arquivo em que cada link foi encontrado e o texto descritivo do link. Caso algum arquivo não seja Markdown `(.md)` ou não apresente links, uma mensagem vai ser mostrada na tela. A informação retorna da seguinte maneira ao usuário:
-<br><img src="./arquivos/comandos/md-links-arquivos.png"><br>
+<br><img src="./comandos/md-links-arquivos.png"><br>
 
 **🔍 Validação de links do diretório**
 
@@ -57,7 +57,7 @@ Esse comando com a opção `--validate` fará uma requisição HTTP para verific
 `Link não encontrado` = Link não encontrado 
 
 A informação retorna da seguinte maneira ao usuário:
-<br><img src="./arquivos/comandos/md-links-arquivos-validate.png"><br>
+<br><img src="./comandos/md-links-arquivos-validate.png"><br>
 
 **🔍 Estatísticas de links do diretório**
 
@@ -65,14 +65,14 @@ A informação retorna da seguinte maneira ao usuário:
   md-links ./nomeDoDiretório --stats
 ```
 Esse comando com a opção `--stats` exibe o número total de links encontrados no arquivo e o total de links únicos. A informação retorna da seguinte maneira ao usuário:
-<br><img src="./arquivos/comandos/md-links-arquivos-stats.png"><br>
+<br><img src="./comandos/md-links-arquivos-stats.png"><br>
 
 Comando com a opção `--stats --validate` exibe o número total de links encontrados no arquivo, o total de links únicos e o total de links que não estão funcionoando corretamente/quebrados.
 ```bash
   md-links ./nomeDoDiretório --stats --validate
 ```
 A informação retorna da seguinte maneira ao usuário:
-<br><img src="./arquivos/comandos/md-links-arquivos-stats-validate.png"><br>
+<br><img src="./comandos/md-links-arquivos-stats-validate.png"><br>
 
 **🔍 Listagem de links do arquivo:**
 
@@ -80,7 +80,7 @@ A informação retorna da seguinte maneira ao usuário:
   md-links ./nomeDoDiretório/caminhoDoArquivo
 ```
 Esse comando lê o arquivo Markdown especificado e imprime o caminho do arquivo, os links encontrados e o texto descritivo do link. A informação retorna da seguinte maneira ao usuário:
-<br><img src="./arquivos/comandos/md-links-arquivos-caminhoDoArquivo.png"><br>
+<br><img src="./comandos/md-links-arquivos-caminhoDoArquivo.png"><br>
 
 **🔍 Validação de links do arquivo**
 
@@ -88,7 +88,7 @@ Esse comando lê o arquivo Markdown especificado e imprime o caminho do arquivo,
   md-links ./nomeDoDiretório/caminhoDoArquivo --validate
 ```
 Esse comando com a opção `--validate` lê o arquivo Markdown especificado e assim como ocorre no diretório, fará uma requisição HTTP para verificar se cada link funciona ou não. A informação retorna da seguinte maneira ao usuário:
-<br><img src="./arquivos/comandos/md-links-arquivos-caminhoDoArquivo-validate.png"><br>
+<br><img src="./comandos/md-links-arquivos-caminhoDoArquivo-validate.png"><br>
 
 **🔍 Estatísticas de links do arquivo**
 
@@ -96,7 +96,7 @@ Esse comando com a opção `--validate` lê o arquivo Markdown especificado e as
   md-links ./nomeDoDiretório/caminhoDoArquivo --stats
 ```
 Esse comando com a opção `--stats` lê o arquivo Markdown especificado e assim como ocorre no diretório, exibe o número total de links encontrados no arquivo e o total de links únicos. A informação retorna da seguinte maneira ao usuário:
-<br><img src="./arquivos/comandos/md-links-arquivos-caminhoDoArquivo-stats.png"><br>
+<br><img src="./comandos/md-links-arquivos-caminhoDoArquivo-stats.png"><br>
 
 Esse comando com a opção `--stats --validate` lê o arquivo Markdown especificado e assim como ocorre no diretório, exibe o número total de links encontrados no arquivo, o total de links únicos e o total de links que não estão funcionoando corretamente/quebrados.
 
@@ -104,15 +104,15 @@ Esse comando com a opção `--stats --validate` lê o arquivo Markdown especific
   md-links ./nomeDoDiretório/caminhoDoArquivo --stats --validate
 ```
 A informação retorna da seguinte maneira ao usuário:
-<br><img src="./arquivos/comandos/md-links-arquivos-caminhoDoArquivo-stats-validate.png"><br>
+<br><img src="./comandos/md-links-arquivos-caminhoDoArquivo-stats-validate.png"><br>
 
 **❌ Mensagens de erros que podem aparecer**
 
 Arquivo com extensão que não seja Markdown `(.md)`:
-<br><img src="./arquivos/comandos/md-links-ext-inval.png"><br>
+<br><img src="./comandos/md-links-ext-inval.png"><br>
 
 Arquivo sem links:
-<br><img src="./arquivos/comandos/md-links-sem-links.png"><br>
+<br><img src="./comandos/md-links-sem-links.png"><br>
 
 ## 5. Ferramentas utilizadas 🔧
 
