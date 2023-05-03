@@ -46,6 +46,6 @@ function checkLinks(arrLinks) {
       .catch((erro) => {
         console.error(erro);
       });
-  }
+}
 
 export {checkStatus, validatedList, checkLinks}

@@ -1,7 +1,7 @@
 import chalk from 'chalk';
 import { validatedList } from './validacao-stats.js';
 
-function printList(valida, resultado, identificador ='') {
+function printList(valida, resultado, identificador = '') {
     if (valida) {
         validatedList(resultado)
         .then((categoria) => {

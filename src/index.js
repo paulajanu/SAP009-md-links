@@ -16,7 +16,7 @@ export function getFile(caminhoDoArquivo) {
       console.log(erro);
       throw new Error(chalk.red(erro.code, `- \u2718 Não existe arquivo no diretório \u2718`)); 
     })
-  }
+}
 
 function mdLinks(path, options) {
   try {
@@ -84,11 +84,11 @@ function mdLinks(path, options) {
           }
         })
     } 
-  } catch (erro) {
-    if (erro.code === 'ENOENT') {
+  } catch (err) {
+    if (err.code === 'ENOENT') {
       throw new Error(`O caminho "${path}" é inválido`);
     }
-    console.error(chalk.red(`Erro: ${erro instanceof Error ? erro.message : erro}`));
+    console.error(chalk.red(`Erro: ${err instanceof Error ? err.message : err}`));
   }
 }
 
